@@ -54,7 +54,7 @@ jobs:
           export ANDROID_HOME=$HOME/android-sdk
           export ANDROID_SDK_ROOT=$HOME/android-sdk
           export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH
-          sdkmanager --install "platform-tools" "emulator" "platforms;android-33" "system-images;android;google_apis;x86_64" --verbose 2>&1 | tee sdk-install-full.log
+          sdkmanager --install "platform-tools" "emulator" "platforms;android-33" "system-images;android-33;google_apis;x86_64" --verbose 2>&1 | tee sdk-install-full.log
           sdkmanager --list_installed
           emulator -version 2>&1 | tee emulator-version.txt
           adb --version 2>&1 | tee adb-version.txt
@@ -64,7 +64,7 @@ jobs:
           set -ex
           export ANDROID_HOME=$HOME/android-sdk
           export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH
-          echo "no" | avdmanager create avd -n test-avd -k "system-images;android;google_apis;x86_64" --device "pixel" --force 2>&1 | tee avd-create.log
+          echo "no" | avdmanager create avd -n test-avd -k "system-images;android-33;google_apis;x86_64" --device "pixel" --force 2>&1 | tee avd-create.log
           avdmanager list avd 2>&1 | tee avd-list.txt
           ls -lh ~/.android/avd/ 2>&1 | tee avd-dir.txt
           cat ~/.android/avd/test-avd.ini 2>&1 | tee avd-ini.txt || true
